@@ -31,7 +31,8 @@ public class Person {
     }
 
     public void printGoal() {
-        System.out.println("My goal is to be happy in the future.");
+        System.out.println("My goal is to be happy in the future. ");
     }
+
 
 }

@@ -25,18 +25,7 @@ public class BookStore {
         this.books = books;
     }
 
-    public void increaseRentableBooksNr(){
-        rentableBooksNr++;
-    }
-    public void increaseRomanticBooksNr(){
-        romanticBooksNr++;
-    }
-    public void increaseAdventureBooksNr(){
-        adventureBooksNr++;
-    }
-    public void increaseHorrorBooksNr(){
-        horrorBooksNr++;
-    }
+    
     @Override
     public String toString(){
         return books.size() + " könyv van összesen amiből " + rentableBooksNr + " kölcsönözhető.";

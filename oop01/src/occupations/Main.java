@@ -7,7 +7,9 @@ public class Main {
 
         personA.introduce();
         personA.printGoal();
+        System.out.println();
         personX.introduce();
         personX.cook("broccoli");
+        personX.printGoal();
     }
 }
