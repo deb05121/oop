@@ -14,9 +14,6 @@ public class Chef extends Person {
         System.out.printf("Hi, my name is %s. I am %d. I am a %s and a chef.%n", this.getName(), this.getAge(), this.getGender());
     }
 
-
-
-
     public void cook(String food) {
         System.out.printf("%s has cooked some %s.%n", this.getName(), food);
     }
