@@ -14,10 +14,7 @@ public class Chef extends Person {
         System.out.printf("Hi, my name is %s. I am %d. I am a %s and a chef.%n", this.getName(), this.getAge(), this.getGender());
     }
 
-    @Override
-    public void printGoal() {
-        super.printGoal();
-    }
+
 
 
     public void cook(String food) {
