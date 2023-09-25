@@ -6,6 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+
         List<Book> books = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             if (i < 30) {
@@ -22,10 +23,15 @@ public class Main {
                 Book book = new Book(i + 1, "Jules Verne", "Around the World in Eighty Days", Genre.ADVENTURE, bool_);
                 books.add(book);
             }
+
         }
+
         BookStore bookStore = new BookStore(books);
 
         System.out.println(bookStore);
+        System.out.println(books.get(40));
+        System.out.println(books.get(81).equals(books.get(82)));
+
     }
 
 
