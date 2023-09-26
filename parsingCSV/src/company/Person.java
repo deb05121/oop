@@ -1,9 +1,9 @@
 package company;
 
 public class Person {
-    private String name;
-    private int age;
-    private String occupation;
+    private final String name;
+    private final int age;
+    private final String occupation;
 
     public Person(String name, int age, String occupation) {
         this.name = name;
