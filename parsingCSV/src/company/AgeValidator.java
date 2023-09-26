@@ -1,8 +1,11 @@
 package company;
 
-public class AgeValidator {
+public class AgeValidator extends Validator<Integer> {
+    private final static int minAge = 18;
+    private final static int maxAge = 65;
 
-    public static boolean isValid(int age) {
-        return (age > 17 && age < 66);
+    @Override
+    boolean isValid(Integer age) {
+        return (age >= minAge && age <= maxAge);
     }
 }
