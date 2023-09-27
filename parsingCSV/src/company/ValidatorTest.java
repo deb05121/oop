@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class ValidatorTest {
     Validator<String> nameValidator = new NameValidator();
     @ParameterizedTest
-    @ValueSource(strings = {"nemecsek", "Bob@", "$", " "})
+    @ValueSource(strings = {"nemecsek", "Bob@", "$", ".scr", ".value", "=true", "<script>", "</script>"})
     void testNameValidatorFalse(String str) {
 
         Assertions.assertFalse(nameValidator.isValid(str));
@@ -37,7 +37,7 @@ public class ValidatorTest {
 
     Validator<String> occupationValidator = new OccupationValidator();
     @ParameterizedTest
-    @ValueSource(strings = {"Nemecsek", "Bob@", "$", " "})
+    @ValueSource(strings = {"Nemecsek", "Bob@", "$", ".scr", ".value", "=true", "<script>", "</script>"})
     void testOccupationValidatorFalse(String str) {
 
         Assertions.assertFalse(occupationValidator.isValid(str));
