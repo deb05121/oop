@@ -30,9 +30,7 @@ public class BookStore {
     }
 
     private String makeString(Genre genre) {
-        String toString = "";
-        toString = toString.concat(String.valueOf(getBooks(genre))).concat(" darab " + genre.toString() + " van, amiből " + getRentableBooks(genre)) + " kikölcsönözhető.\r\n";
-        return toString;
+        return String.valueOf(getBooks(genre) + " darab " + genre.toString() + " van, amiből " + getRentableBooks(genre) + " kikölcsönözhető.\r\n");
     }
 
     private int getRentableBooks(Genre genre) {
