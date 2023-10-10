@@ -1,5 +1,6 @@
 package library;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookStore {
@@ -20,26 +21,34 @@ public class BookStore {
     @Override
     public String toString() {
         //TODO: refactor
-        String toString = getAllBooks() + " darab könyv van összesen, amiből " + getRentableBooks() + " kölcsönözhető.\r\n";
-        toString = toString.concat(String.valueOf(getBooks(Genre.HORROR))).concat(" darab horrorsztori van, amiből "+getRentableBooks(Genre.HORROR))+" kikölcsönözhető.\r\n";
-        toString = toString.concat((String.valueOf(getBooks(Genre.ADVENTURE))).concat(" darab kalandregény van, amiből "+ getRentableBooks(Genre.ADVENTURE))+" kikölcsönözhető.\r\n" );
-        toString = toString.concat(String.valueOf(getBooks(Genre.ROMANTIC))).concat(" darab romantikus könyv van, amiből "+ getRentableBooks(Genre.ROMANTIC)+" kikölcsönözhető.");
+        StringBuilder toString = new StringBuilder(getAllBooks() + " darab könyv van összesen, amiből " + getRentableBooks() + " kölcsönözhető.\r\n");
+        Genre[] genres = Genre.values();
+        for (Genre genre : genres) {
+            toString.append(makeString(genre));
+        }
+        return toString.toString();
+    }
+
+    private String makeString(Genre genre) {
+        String toString = "";
+        toString = toString.concat(String.valueOf(getBooks(genre))).concat(" darab " + genre.toString() + " van, amiből " + getRentableBooks(genre)) + " kikölcsönözhető.\r\n";
         return toString;
     }
 
-    private int getRentableBooks(Genre genre){
+    private int getRentableBooks(Genre genre) {
         int counter = 0;
-        for(Book book: books){
-            if(book.getGenre()==genre && book.isRentable()){
+        for (Book book : books) {
+            if (book.getGenre() == genre && book.isRentable()) {
                 counter++;
             }
         }
         return counter;
     }
+
     private int getBooks(Genre genre) {
         int counter = 0;
-        for(Book book: books){
-            if(book.getGenre()==genre ){
+        for (Book book : books) {
+            if (book.getGenre() == genre) {
                 counter++;
             }
         }
