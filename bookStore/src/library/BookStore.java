@@ -1,11 +1,9 @@
 package library;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookStore {
     private List<Book> books;
-    private int rentableBooksNr;
 
     public BookStore() {
     }
@@ -14,9 +12,6 @@ public class BookStore {
         this.books = books;
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
 
     @Override
     public String toString() {
@@ -30,7 +25,7 @@ public class BookStore {
     }
 
     private String makeString(Genre genre) {
-        return String.valueOf(getBooks(genre) + " darab " + genre.toString() + " van, amiből " + getRentableBooks(genre) + " kikölcsönözhető.\r\n");
+        return getBooks(genre) + " darab " + genre.toString() + " van, amiből " + getRentableBooks(genre) + " kikölcsönözhető.\r\n";
     }
 
     private int getRentableBooks(Genre genre) {
