@@ -15,7 +15,7 @@ public class BookStore {
 
     @Override
     public String toString() {
-        //TODO: refactor
+
         StringBuilder toString = new StringBuilder(getAllBooks() + " darab könyv van összesen, amiből " + getRentableBooks() + " kölcsönözhető.\r\n");
         Genre[] genres = Genre.values();
         for (Genre genre : genres) {

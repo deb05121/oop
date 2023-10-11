@@ -18,9 +18,9 @@ public class Main {
                 books.add(book);
 
             } else {
-                boolean bool_;
-                bool_ = Math.random() < 0.5;
-                Book book = new Book(i + 1, "Jules Verne", "Around the World in Eighty Days", Genre.ADVENTURE, bool_);
+                boolean randomBoolean;
+                randomBoolean = Math.random() < 0.5;
+                Book book = new Book(i + 1, "Jules Verne", "Around the World in Eighty Days", Genre.ADVENTURE, randomBoolean);
                 books.add(book);
             }
 
