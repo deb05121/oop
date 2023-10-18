@@ -8,7 +8,7 @@ import java.util.logging.SimpleFormatter;
 
 public class FileLogger {
 
-    public void getFileLogger(String nameA, String nameB) {
+    public void getFileLogger(String parameterA, String parameterB) {
         Logger logger = Logger.getLogger(FileLogger.class.getName());
         FileHandler fh;
         try{
@@ -17,7 +17,7 @@ public class FileLogger {
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
 
-            logger.log(Level.SEVERE, "logging: {0} {1}", new Object[]{nameA, nameB});
+            logger.log(Level.SEVERE, "logging: {0} {1}", new Object[]{parameterA, parameterB});
 
         } catch (IOException e) {
             throw new RuntimeException(e);
