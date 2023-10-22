@@ -16,7 +16,10 @@ public class BookStore {
     @Override
     public String toString() {
 
-        StringBuilder toString = new StringBuilder(getAllBooks() + " darab könyv van összesen, amiből " + getRentableBooks() + " kölcsönözhető.\r\n");
+        StringBuilder toString = new StringBuilder(getAllBooks()
+                + " darab könyv van összesen, amiből "
+                + getRentableBooks()
+                + " kölcsönözhető.\r\n");
         Genre[] genres = Genre.values();
         for (Genre genre : genres) {
             toString.append(makeString(genre));
@@ -25,7 +28,12 @@ public class BookStore {
     }
 
     private String makeString(Genre genre) {
-        return getBooks(genre) + " darab " + genre.toString() + " van, amiből " + getRentableBooks(genre) + " kikölcsönözhető.\r\n";
+        return getBooks(genre)
+                + " darab "
+                + genre.toString()
+                + " van, amiből "
+                + getRentableBooks(genre)
+                + " kikölcsönözhető.\r\n";
     }
 
     private int getRentableBooks(Genre genre) {

@@ -6,9 +6,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-public class FileLogger {
+public class FileLogger implements MyLogger{
 
-    public void getFileLogger(String parameterA, String parameterB) {
+    @Override
+    public void log(String message) {
+
+    }
+
+    @Override
+    public void log(String messageA, String messageB) {
         Logger logger = Logger.getLogger(FileLogger.class.getName());
         FileHandler fh;
         try{
@@ -17,13 +23,10 @@ public class FileLogger {
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
 
-            logger.log(Level.SEVERE, "logging: {0} {1}", new Object[]{parameterA, parameterB});
+            logger.log(Level.SEVERE, "logging: {0} {1}", new Object[]{messageA, messageB});
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
-
 }
