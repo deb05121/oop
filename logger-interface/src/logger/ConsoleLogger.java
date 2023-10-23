@@ -8,6 +8,5 @@ public class ConsoleLogger implements MyLogger {
     public void log(String message) {
         Logger logger = Logger.getLogger(ConsoleLogger.class.getName());
         logger.log(Level.INFO, message);
-
     }
 }
