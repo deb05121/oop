@@ -6,7 +6,7 @@ public class Main {
         cLogger.log("It's just an info.");
 
         FileLogger fLogger = new FileLogger();
-        fLogger.log("parameter1", "parameter2");
+        fLogger.log("parameter");
 
     }
 }

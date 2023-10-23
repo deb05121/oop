@@ -1,5 +1,5 @@
 package logger;
 
-public interface MyLogger{
-
+public interface MyLogger {
+    void log(String message);
 }
