@@ -3,8 +3,6 @@ package cities;
 public class City {
     private String nameOfCity;
     private int temperature;
-
-
     public City() {
 
     }

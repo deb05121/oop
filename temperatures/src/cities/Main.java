@@ -24,9 +24,7 @@ public class Main {
                     City newCity = new City(words[0], temporary);
                     cities.add(newCity);
                 }
-
             }
-
         } catch (IOException ignored) {
 
         }
