@@ -10,7 +10,6 @@ public class FileLogger implements MyLogger {
 
     @Override
     public void log(String message) {
-
         String url;
         System.out.println("You should specify the path to the log file:");
         try (Scanner scanner = new Scanner(System.in)) {
