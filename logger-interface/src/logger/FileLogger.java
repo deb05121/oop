@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 public class FileLogger implements MyLogger {
     private static final Logger logger = Logger.getLogger(FileLogger.class.getName());
+
     @Override
     public void log(String message) {
 
@@ -15,7 +16,7 @@ public class FileLogger implements MyLogger {
         try (Scanner scanner = new Scanner(System.in)) {
             url = scanner.nextLine();
         }
-        try(CustomFileHandler fh = new CustomFileHandler(new FileHandler(url))) {
+        try (CustomFileHandler fh = new CustomFileHandler(new FileHandler(url))) {
             logger.addHandler(fh.getFileHandler());
             logger.log(Level.SEVERE, message);
         } catch (Exception e) {
