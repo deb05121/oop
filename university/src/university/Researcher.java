@@ -1,6 +1,6 @@
 package university;
 
-public class Researcher implements Enrollable {
+public class Researcher extends Role implements Enrollable {
     private String name;
     private String researchArea;
     private int yearsOfResearchExperience;
@@ -15,11 +15,11 @@ public class Researcher implements Enrollable {
 
     @Override
     public String toString() {
-        return "Researcher{" +
-                "name='" + name + '\'' +
-                ", researchArea='" + researchArea + '\'' +
-                ", yearsOfResearchExperience=" + yearsOfResearchExperience +
-                '}';
+        return "\n" + "Researcher{" +
+                "name='" + name + '\'' + "\n" +
+                ", researchArea='" + researchArea + '\'' + "\n" +
+                ", yearsOfResearchExperience=" + yearsOfResearchExperience + "\n" +
+                '}' + "\n";
     }
 
     public String getName() {

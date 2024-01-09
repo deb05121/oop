@@ -1,6 +1,6 @@
 package university;
 
-public class Professor {
+public class Professor extends Role {
     private String name;
     private Faculty faculty;
     private int yearsOfExperience;
@@ -17,11 +17,11 @@ public class Professor {
 
     @Override
     public String toString() {
-        return "Professor{" +
-                "name='" + name + '\'' +
-                ", faculty=" + faculty +
+        return "\n" + "Professor{" +
+                "name='" + name + '\'' + "\n" +
+                ", faculty=" + faculty + "\n" +
                 ", yearsOfExperience=" + yearsOfExperience +
-                '}';
+                '}' + "\n";
     }
 
     public String getName() {

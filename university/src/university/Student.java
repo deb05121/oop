@@ -1,6 +1,6 @@
 package university;
 
-public class Student implements Enrollable {
+public class Student extends Role implements Enrollable {
     private String name;
     private String studentId;
     private String major;
@@ -19,11 +19,11 @@ public class Student implements Enrollable {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", studentId='" + studentId + '\'' +
+        return "\n" + "Student{" +
+                "name='" + name + '\'' + "\n" +
+                ", studentId='" + studentId + '\'' + "\n" +
                 ", major='" + major + '\'' +
-                '}';
+                '}' + "\n";
     }
 
     public String getName() {

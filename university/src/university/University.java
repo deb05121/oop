@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class University {
-    private static University UNIVERSITYINSTANCE;
+    private static University UNIVERSITY_INSTANCE;
     private static Set<Course> courseSet;
     private static Set<Professor> professorSet;
     private static Set<Enrollable> participantSet;
@@ -16,23 +16,23 @@ public class University {
     }
 
     public static University getUniversityInstance() {
-        if (UNIVERSITYINSTANCE == null) {
-            UNIVERSITYINSTANCE = new University();
+        if (UNIVERSITY_INSTANCE == null) {
+            UNIVERSITY_INSTANCE = new University();
         }
-        return UNIVERSITYINSTANCE;
+        return UNIVERSITY_INSTANCE;
     }
 
     public void offerCourse(Course course) {
         if (courseSet.contains(course)) {
-            System.out.println("This course is already exist.");
+            System.out.printf("This course already exists: %s\n", course);
         } else {
             courseSet.add(course);
         }
     }
 
     public void hireProfessor(Professor professor) {
-        if (participantSet.contains(professor)) {
-            System.out.println("This professor is already exist.");
+        if (professorSet.contains(professor)) {
+            System.out.printf("This professor already exists: %s\n", professor);
         } else {
             professorSet.add(professor);
         }
@@ -40,7 +40,7 @@ public class University {
 
     public void admitEnrollable(Enrollable enrollable) {
         if (participantSet.contains(enrollable)) {
-            System.out.println("This participant is already exist.");
+            System.out.printf("This participant is already exist: %s\n", enrollable);
         } else {
             participantSet.add(enrollable);
         }

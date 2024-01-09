@@ -3,7 +3,7 @@ package university;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Course {
+public class Course extends Community {
     private String courseCode;
     private String courseName;
     private Professor professor;
@@ -19,9 +19,29 @@ public class Course {
         enrolledParticipants = new HashSet<>();
     }
 
+    public Course() {
+
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public void setEnrolledParticipants(Set<Enrollable> enrolledParticipants) {
+        this.enrolledParticipants = enrolledParticipants;
+    }
+
     public void enrollParticipant(Enrollable enrollable) {
         if (enrolledParticipants.contains(enrollable)) {
-            System.out.println("This nominated person is already part of course list.");
+            System.out.printf("This nominated person %s is already part of course list: %s\n\n", enrollable, courseName);
         } else {
             enrolledParticipants.add(enrollable);
         }
@@ -37,11 +57,11 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "courseCode='" + courseCode + '\'' +
-                ", courseName='" + courseName + '\'' +
+        return "\n" + "Course{" +
+                "\n" + "courseCode='" + courseCode + '\'' + "\n" +
+                ", courseName='" + courseName + '\'' + "\n" +
                 ", professor=" + professor +
                 ", enrolledParticipants=" + enrolledParticipants +
-                '}';
+                '}' + "\n";
     }
 }
