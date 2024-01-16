@@ -1,19 +1,13 @@
 package university;
 
-public class Student extends Role implements Enrollable {
+public abstract class Student implements Enrollable {
     private String name;
     private String studentId;
-    private String major;
+    private Faculty major;
 
-    public Student() {
-    }
-
-    public Student(String name, String studentId, String major) {
+    public Student(String name, String studentId, Faculty major) {
         this.name = name;
-        StudentIdValidator studentIdValidator = new StudentIdValidator();
-        if (studentIdValidator.isValid(studentId)) {
-            this.studentId = studentId;
-        }
+        this.studentId = studentId;
         this.major = major;
     }
 
@@ -26,18 +20,6 @@ public class Student extends Role implements Enrollable {
                 '}' + "\n";
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
     public void setStudentId(String studentId) {
         StudentIdValidator studentIdValidator = new StudentIdValidator();
         if (studentIdValidator.isValid(studentId)) {
@@ -47,11 +29,24 @@ public class Student extends Role implements Enrollable {
         }
     }
 
-    public String getMajor() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMajor(Faculty major) {
+        this.major = major;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public Faculty getMajor() {
         return major;
     }
 
-    public void setMajor(String major) {
-        this.major = major;
-    }
 }

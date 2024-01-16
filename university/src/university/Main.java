@@ -1,51 +1,39 @@
 package university;
 
+import java.util.Set;
+
 public class Main {
-    public static void main(String[] args) {
-
-        RoleFactory roleFactory = new RoleFactory();
-        Professor profX = (Professor) roleFactory.create(Professor.class);
-        profX.setName("First Prof");
-        profX.setFaculty(Faculty.MECHANICALENGINEERING);
-        profX.setYearsOfExperience(15);
-        System.out.println("Professor factoring: " + profX);
-        
-        Role profY = roleFactory.create(Professor.class);
-        Role profZ = roleFactory.create(Professor.class);
-
-        Role researcherX = roleFactory.create(Researcher.class);
-        Role researcherY = roleFactory.create(Researcher.class);
-        Role researcherZ = roleFactory.create(Researcher.class);
-
-        Role studentX = roleFactory.create(Student.class);
-        Role studentY = roleFactory.create(Student.class);
-        Role studentZ = roleFactory.create(Student.class);
-
-        CommunityFactory communityFactory = new CommunityFactory();
-
-        Community courseX = communityFactory.create(Course.class);
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         University university = new University();
         Professor profA = new Professor("AB", Faculty.COMPUTERSCIENCE, 10);
         Course courseA = new Course("ASF-123", "CourseA", profA);
-        Student studentA = new Student("SA", "12345678", "computerScience" );
-        Student studentB = new Student("SB", "12345671", "computerScience" );
-        Student studentC = new Student("SC", "12345670", "computerScience" );
+
+        //prototype pattern with deep clone
+        Set<Enrollable> aTestParticipantsList = (Set<Enrollable>) courseA.clone();
+        Set<Enrollable> bTestParticipantsList = (Set<Enrollable>) courseA.clone();
+        Set<Enrollable> examParticipantsList = (Set<Enrollable>) courseA.clone();
+
+       // Student bScStudentA = new BScStudent("SA", "12345678", "computerScience" );
+        StudentFactory studentFactory = new StudentFactory();
+        Student bscStudentA = studentFactory.createWithStringInput("BScStudent", "SA", "12345670", Faculty.COMPUTERSCIENCE);
+        Student bscStudentB = studentFactory.createWithStringInput("BScStudent", "SB", "12345671", Faculty.COMPUTERSCIENCE );
+        Student bscStudentC = studentFactory.createWithStringInput("BScStudent", "SC", "12345672", Faculty.COMPUTERSCIENCE );
         Researcher researcherA = new Researcher("RA", "Computer Science", 5);
-        university.admitEnrollable(studentA);
-        university.admitEnrollable(studentB);
-        university.admitEnrollable(studentC);
-        university.admitEnrollable(studentC);//1. error
+        university.admitEnrollable(bscStudentA);
+        university.admitEnrollable(bscStudentB);
+        university.admitEnrollable(bscStudentC);
+        university.admitEnrollable(bscStudentC);//1. error
 
         university.hireProfessor(profA);
         university.hireProfessor(profA);//2. error
         university.offerCourse(courseA);
         university.offerCourse(courseA);//3. error
 
-        courseA.enrollParticipant(studentA);
-        courseA.enrollParticipant(studentB);
-        courseA.enrollParticipant(studentC);
-        courseA.enrollParticipant(studentA);//4. error
+        courseA.enrollParticipant(bscStudentA);
+        courseA.enrollParticipant(bscStudentB);
+        courseA.enrollParticipant(bscStudentC);
+        courseA.enrollParticipant(bscStudentA);//4. error
         courseA.enrollParticipant(researcherA);
         courseA.enrollParticipant(researcherA);//5. error
 

@@ -3,7 +3,7 @@ package university;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Course extends Community {
+public class Course extends Community implements Cloneable{
     private String courseCode;
     private String courseName;
     private Professor professor;
@@ -64,4 +64,12 @@ public class Course extends Community {
                 ", enrolledParticipants=" + enrolledParticipants +
                 '}' + "\n";
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        Set<Enrollable> tempAParticipantsList = new HashSet<>();
+        tempAParticipantsList.addAll(this.getEnrolledParticipants());
+        return tempAParticipantsList;
+    }
 }
+

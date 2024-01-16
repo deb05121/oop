@@ -1,6 +1,6 @@
 package university;
 
-public class Researcher extends Role implements Enrollable {
+public class Researcher implements Enrollable {
     private String name;
     private String researchArea;
     private int yearsOfResearchExperience;

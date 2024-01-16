@@ -1,6 +1,6 @@
 package university;
 
-public class Professor extends Role {
+public class Professor {
     private String name;
     private Faculty faculty;
     private int yearsOfExperience;
