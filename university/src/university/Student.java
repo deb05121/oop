@@ -7,7 +7,7 @@ public abstract class Student implements Enrollable {
 
     public Student(String name, String studentId, Faculty major) {
         this.name = name;
-        this.studentId = studentId;
+        this.setStudentId(studentId);
         this.major = major;
     }
 
