@@ -67,9 +67,9 @@ public class Course extends Community implements Cloneable{
 
     @Override
     public Object clone() throws CloneNotSupportedException{
-        Set<Enrollable> tempAParticipantsList = new HashSet<>();
-        tempAParticipantsList.addAll(this.getEnrolledParticipants());
-        return tempAParticipantsList;
+        super.clone();
+        return new HashSet<>(this.getEnrolledParticipants());
     }
+
 }
 

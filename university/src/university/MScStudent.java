@@ -6,4 +6,8 @@ public class MScStudent extends Student{
         super(name, studentId, major);
     }
 
+    public void doPhD(){
+
+    }
+
 }

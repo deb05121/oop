@@ -24,7 +24,7 @@ public class University {
 
     public void offerCourse(Course course) {
         if (courseSet.contains(course)) {
-            System.out.printf("This course already exists: %s\n", course);
+            System.out.printf("This course is already existent: %s\n", course);
         } else {
             courseSet.add(course);
         }
@@ -32,7 +32,7 @@ public class University {
 
     public void hireProfessor(Professor professor) {
         if (professorSet.contains(professor)) {
-            System.out.printf("This professor already exists: %s\n", professor);
+            System.out.printf("This professor is already existent: %s\n", professor);
         } else {
             professorSet.add(professor);
         }
@@ -40,7 +40,7 @@ public class University {
 
     public void admitEnrollable(Enrollable enrollable) {
         if (participantSet.contains(enrollable)) {
-            System.out.printf("This participant is already exist: %s\n", enrollable);
+            System.out.printf("This participant is already existent: %s\n", enrollable);
         } else {
             participantSet.add(enrollable);
         }
