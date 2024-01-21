@@ -54,21 +54,25 @@ public class Main {
         System.out.println("\nStudents of Course M: " + university.getParticipantsOfCourse(courseM));
         System.out.println("\nMSc Student list: ");
 
-        Dorm dormA = new Dorm();
-        dormA.loadRooms();
-        Dorm newDormB = (Dorm) dormA.clone(); //deep clone first
-        newDormB.setName("CLONED Dorm B");
-        Dorm newDormC = (Dorm) dormA.clone();  // deep clone second
-        newDormC.setName("CLONED Dorm C");
-        List<Integer> listA = newDormB.getRoomList(); //shallow clone for easier manipulation
-        listA.removeAll(List.of(301, 302, 303, 304, 305));  //deep cloned instance will be changed
-        List<Integer> listB = newDormC.getRoomList(); //shallow clone of newDormC
-        listB.addAll(List.of(401, 402, 403, 404, 405));
+        //Dorm dormPrototypeA = new Dorm();
+        //dormPrototypeA.loadRooms(List.of(101, 102, 103, 104, 105, 201, 202, 203, 204, 205, 301, 302, 303, 304, 305));
+        Dorm dormPrototypeA = new Dorm(List.of(101, 102, 103, 104, 105, 201, 202, 203, 204, 205, 301, 302, 303, 304, 305));
+        Dorm dormPrototypeB = new Dorm(List.of(101, 102, 103, 104, 105, 201, 202, 203, 204, 205));
+        Dorm dormPrototypeC = new Dorm(List.of(101, 102, 103, 104, 105, 201, 202, 203, 204, 205, 301, 302, 303, 304, 305, 401, 402, 403, 404, 405));
+        Dorm newThreeStoreyDorm = (Dorm) dormPrototypeA.clone(); //deep clone first
+        newThreeStoreyDorm.setName("Three storey dorm");
+        Dorm newTwoStoreyDorm = (Dorm) dormPrototypeB.clone(); //deep clone first
+        newTwoStoreyDorm.setName("Two storey dorm");
+        Dorm newFourStoreyDorm = (Dorm) dormPrototypeC.clone(); //deep clone first
+        newFourStoreyDorm.setName("Four storey dorm");
 
-        System.out.println(dormA);
-        System.out.println("two-story building rooms:            " + listA);
-        System.out.println(newDormB);
-        System.out.println("four-story building rooms:           " + listB);
-        System.out.println(newDormC);
+
+        System.out.println(dormPrototypeB);
+        System.out.println(dormPrototypeA);
+        System.out.println(dormPrototypeC);
+        System.out.println(newTwoStoreyDorm);
+        System.out.println(newThreeStoreyDorm);
+        System.out.println(newFourStoreyDorm);
+
     }
 }

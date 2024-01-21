@@ -4,30 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dorm implements Cloneable {
+    private static int prototypeCounter;
     private String name;
-    private final List<Integer> roomList;
+    private List<Integer> roomList;
 
-    public Dorm() {
+    public Dorm() {  // it is used only for cloning
         roomList = new ArrayList<>();
-        name = "PROTOTYPE";
     }
 
     public Dorm(List<Integer> rooms) {
+        prototypeCounter++;
+        name = "PROTOTYPE_".concat(String.valueOf(prototypeCounter));
         roomList = rooms;
     }
 
-    public void loadRooms() {
-        roomList.addAll(List.of(101, 102, 103, 104, 105, 201, 202, 203, 204, 205, 301, 302, 303, 304, 305));
+    public void loadRooms(List<Integer> roomList) {
+        this.roomList = roomList;
     }
 
-    public List<Integer> getRoomList() {
-        return roomList;
-    }
-    
     @Override
     public Object clone() throws CloneNotSupportedException {
         super.clone();
-        return new Dorm(new ArrayList<>(roomList));
+        Dorm temp = new Dorm();
+        temp.roomList = this.roomList;
+        return temp;
     }
 
     public void setName(String name) {
