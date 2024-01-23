@@ -3,7 +3,7 @@ package members.v1;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Person implements Comparable{
+public class Person implements Comparable {
     private String surname;
     private String firstName;
     private LocalDate dateOfBirth;
@@ -14,7 +14,41 @@ public class Person implements Comparable{
     public Person() {
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setResidence(Residence residence) {
+        this.residence = residence;
+    }
+
+    public void setDateOfEnter(LocalDate dateOfEnter) {
+        this.dateOfEnter = dateOfEnter;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -40,6 +74,15 @@ public class Person implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        return this.;
+        if (o instanceof Person person) {
+            if(surname.compareTo(person.getSurname()) != 0){
+                return surname.compareTo(person.getSurname());
+            } else if(firstName.compareTo(person.getFirstName()) != 0){
+                return firstName.compareTo(person.getFirstName());
+            } else if (!dateOfBirth.isEqual(person.getDateOfBirth())) {
+                return dateOfBirth.compareTo(person.getDateOfBirth());
+            }
+        }
+        return 0;
     }
 }

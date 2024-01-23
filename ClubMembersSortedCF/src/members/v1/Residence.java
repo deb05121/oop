@@ -11,7 +11,12 @@ public class Residence {
     }
 
     public Residence(int zipCode, String settlement, String address) {
-        this.zipCode = zipCode;
+        ZipCodeValidator zipCodeValidator = new ZipCodeValidator();
+        if(zipCodeValidator.isValidZipCode(String.valueOf(zipCode))){
+            this.zipCode = zipCode;
+        } else {
+            System.out.println("This zip code isn't valid.");
+        }
         this.settlement = settlement;
         this.address = address;
     }
