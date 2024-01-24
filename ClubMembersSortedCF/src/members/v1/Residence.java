@@ -16,7 +16,7 @@ public class Residence {
         if (zipCodeValidator.isValidZipCode(String.valueOf(zipCode))) {
             this.zipCode = zipCode;
         } else {
-            throw new InvalidZipCodeException("Zip code must be between 0000 and 9999.");
+            throw new InvalidZipCodeException("Zip code must be between 1000 and 9999.");
         }
         this.settlement = settlement;
         this.address = address;
