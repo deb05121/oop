@@ -14,6 +14,14 @@ public class Person implements Comparable {
     public Person() {
     }
 
+    public Residence getResidence() {
+        return residence;
+    }
+
+    public LocalDate getDateOfEnter() {
+        return dateOfEnter;
+    }
+
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -24,6 +32,10 @@ public class Person implements Comparable {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public Grade getGrade() {
+        return grade;
     }
 
     public void setSurname(String surname) {
@@ -68,7 +80,8 @@ public class Person implements Comparable {
         return "\nPerson{" +
                 "surname='" + surname + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", grade=" + grade.getDescribe() +
+                " residence= " + residence.toString() + '\'' +
+                ", grade=" + grade.getName() +
                 '}';
     }
 

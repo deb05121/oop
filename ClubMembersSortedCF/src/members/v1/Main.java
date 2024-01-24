@@ -1,9 +1,10 @@
 package members.v1;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidZipCodeException {
         Members members = new Members();
 
         Person personA0 = new PersonBuilder()
@@ -86,17 +87,18 @@ public class Main {
                 .enterDate(LocalDate.ofEpochDay(20210101))
                 .grade(Grade.MASTER)
                 .build();
-        System.out.println(members.add(personA0));
-        System.out.println(members.add(personA1));
-        System.out.println(members.add(personA2));
-        System.out.println(members.add(personA3));
-        System.out.println(members.add(personA4));
-        System.out.println(members.add(personA5));
-        System.out.println(members.add(personA6));
 
-        System.out.println(members.add(personB));
-        System.out.println(members.add(personC));
-        System.out.println(members.add(personD));
+        System.out.println("PersonA0 added: " + members.add(personA0));
+        System.out.println("PersonA1 added: " + members.add(personA1));
+        System.out.println("PersonA2 added: " + members.add(personA2));
+        System.out.println("PersonA3 added: " + members.add(personA3));
+        System.out.println("PersonA4 added: " + members.add(personA4));
+        System.out.println("PersonA5 added: " + members.add(personA5));
+        System.out.println("PersonA6 added: " + members.add(personA6));
+
+        System.out.println("PersonA7 added: " + members.add(personB));
+        System.out.println("PersonA8 added: " + members.add(personC));
+        System.out.println("PersonA9 added: " + members.add(personD));
 
         System.out.println(members.toString());
         System.out.println(members.size());

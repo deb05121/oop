@@ -2,12 +2,15 @@ package members.v1;
 
 public enum Grade {
     NOVICE("kezdő"), INTERMEDIATE("középhaladó"), PROFICIENT("haladó"), MASTER("profi");
-    private String describe;
+    private final String name;
 
-    Grade(String describe) {
+    Grade(String name) {
+        this.name = name;
     }
 
-    public String getDescribe() {
-        return describe;
+
+    public String getName() {
+        return name;
     }
+
 }

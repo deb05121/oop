@@ -1,5 +1,6 @@
 package members.v1;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class Residence {
@@ -10,12 +11,12 @@ public class Residence {
     public Residence() {
     }
 
-    public Residence(int zipCode, String settlement, String address) {
+    public Residence(int zipCode, String settlement, String address) throws InvalidZipCodeException {
         ZipCodeValidator zipCodeValidator = new ZipCodeValidator();
-        if(zipCodeValidator.isValidZipCode(String.valueOf(zipCode))){
+        if (zipCodeValidator.isValidZipCode(String.valueOf(zipCode))) {
             this.zipCode = zipCode;
         } else {
-            System.out.println("This zip code isn't valid.");
+            throw new InvalidZipCodeException("Zip code must be between 0000 and 9999.");
         }
         this.settlement = settlement;
         this.address = address;

@@ -1,5 +1,6 @@
 package members.v1;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class PersonBuilder {
@@ -20,7 +21,7 @@ public class PersonBuilder {
         return this;
     }
 
-    PersonBuilder residence(int zipcode, String settlement, String address) {
+    PersonBuilder residence(int zipcode, String settlement, String address) throws InvalidZipCodeException {
         Residence residence = new Residence(zipcode, settlement, address);
         person.setResidence(residence);
         return this;
