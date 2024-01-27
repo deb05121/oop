@@ -4,7 +4,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Members {
-    private SortedSet<Person> members;
+    private final SortedSet<Person> members;
 
     public Members() {
         members = new TreeSet<>();
@@ -38,7 +38,7 @@ public class Members {
     public String toString() {
         StringBuilder str = new StringBuilder();
         for (Person p : members) {
-            str.append(p.toString() + "; ");
+            str.append(p.toString()).append("; ");
         }
         return str.toString();
     }

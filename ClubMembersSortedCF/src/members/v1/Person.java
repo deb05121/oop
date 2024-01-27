@@ -88,11 +88,11 @@ public class Person implements Comparable {
     @Override
     public int compareTo(Object o) {
         if (o instanceof Person person) {
-            if(surname.compareTo(person.getSurname()) != 0){
+            if(!surname.equals(person.getSurname())){
                 return surname.compareTo(person.getSurname());
-            } else if(firstName.compareTo(person.getFirstName()) != 0){
+            } else if(!firstName.equals(person.getFirstName())){
                 return firstName.compareTo(person.getFirstName());
-            } else if (!dateOfBirth.isEqual(person.getDateOfBirth())) {
+            } else {
                 return dateOfBirth.compareTo(person.getDateOfBirth());
             }
         }

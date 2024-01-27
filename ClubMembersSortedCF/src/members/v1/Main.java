@@ -1,6 +1,5 @@
 package members.v1;
 
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class Main {
@@ -19,7 +18,7 @@ public class Main {
                 .surname("Garas")
                 .firstName("Attila")
                 .birthDate(LocalDate.ofEpochDay(19800505))
-                .residence(1204, "Budapest", "Soroksári út 111.")
+                .residence(1201, "Bp", "Soroksári út 111.")
                 .enterDate(LocalDate.ofEpochDay(20210101))
                 .grade(Grade.INTERMEDIATE)
                 .build();
@@ -27,7 +26,7 @@ public class Main {
                 .surname("Fellow")
                 .firstName("Attila")
                 .birthDate(LocalDate.ofEpochDay(19900505))
-                .residence(1204, "Budapest", "Soroksári út 113.")
+                .residence(1202, "Bpest", "Soroksári út 113.")
                 .enterDate(LocalDate.ofEpochDay(20210101))
                 .grade(Grade.INTERMEDIATE)
                 .build();
@@ -35,7 +34,7 @@ public class Main {
                 .surname("Debreceni")
                 .firstName("Attila")
                 .birthDate(LocalDate.ofEpochDay(19500505))
-                .residence(1204, "Budapest", "Soroksári út 104.")
+                .residence(1203, "Budapest", "Soroksári út 104.")
                 .enterDate(LocalDate.ofEpochDay(20210101))
                 .grade(Grade.INTERMEDIATE)
                 .build();
@@ -51,7 +50,7 @@ public class Main {
                 .surname("Bart")
                 .firstName("Attila")
                 .birthDate(LocalDate.ofEpochDay(19660505))
-                .residence(1204, "Budapest", "Soroksári út 114.")
+                .residence(1205, "Budapest", "Soroksári út 114.")
                 .enterDate(LocalDate.ofEpochDay(20210101))
                 .grade(Grade.INTERMEDIATE)
                 .build();
@@ -59,7 +58,7 @@ public class Main {
                 .surname("Aba")
                 .firstName("Attila")
                 .birthDate(LocalDate.ofEpochDay(19750505))
-                .residence(1204, "Budapest", "Soroksári út 126.")
+                .residence(1206, "Budapest", "Soroksári út 126.")
                 .enterDate(LocalDate.ofEpochDay(20210101))
                 .grade(Grade.INTERMEDIATE)
                 .build();
@@ -100,16 +99,15 @@ public class Main {
         System.out.println("PersonA8 added: " + members.add(personC));
         System.out.println("PersonA9 added: " + members.add(personD));
 
-        System.out.println(members.toString());
+        System.out.println(members);
         System.out.println(members.size());
         System.out.println(members.contains(personA0));
         System.out.println(members.isEmpty());
         System.out.println(members.remove(personA0));
-        System.out.println(members.toString());
+        System.out.println(members);
         System.out.println(members.size());
         members.clear();
         System.out.println(members.size());
-
 
     }
 }
