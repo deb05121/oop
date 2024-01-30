@@ -1,9 +1,13 @@
 package evaluator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
+
 public class Main {
-    public static void main(String[] args) throws InvalidHandSizeException {
+    public static void main(String[] args) throws InvalidHandSizeException, FileNotFoundException {
         Hand hand = null;
         hand = new Hand(
                 List.of(
@@ -44,5 +48,66 @@ public class Main {
         );
         System.out.println(hand2);
 
+        Hand kez0 = getKezFromCsv("kez0.csv");
+        System.out.println(kez0);
+        Hand kezalmostflush = getKezFromCsv("kezalmostflush.csv");
+        System.out.println("Should be ALMOSTFLUSH: " + kezalmostflush);
+
+
     }
+
+    public static Hand getKezFromCsv(String fileName) throws InvalidHandSizeException, FileNotFoundException {
+        CsvParser parser = new CsvParser(new File("C:\\OOP\\oop\\magyarPoker\\csv\\" + fileName), CsvSeparator.COMMA);
+        List<List<String>> cardLists = parser.parse();
+
+        List<Card> cardList = new ArrayList<>();
+        for (List<String> twoStr : cardLists) {
+            Card card = new Card();
+            switch (twoStr.get(0)) {
+                case "SZIV" -> {
+                    card.setCardColour(CardColour.SZIV);
+                    ;
+                }
+                case "ZOLD" -> {
+                    card.setCardColour(CardColour.ZOLD);
+                }
+                case "TOK" -> {
+                    card.setCardColour(CardColour.TOK);
+                }
+                case "MAKK" -> {
+                    card.setCardColour(CardColour.MAKK);
+                }
+            }
+            switch (twoStr.get(1)) {
+                case "ASZ" -> {
+                    card.setCardValue(CardValue.ASZ);
+                }
+                case "KIRALY" -> {
+                    card.setCardValue(CardValue.KIRALY);
+                }
+                case "FELSO" -> {
+                    card.setCardValue(CardValue.FELSO);
+                }
+                case "ALSO" -> {
+                    card.setCardValue(CardValue.ALSO);
+                }
+                case "X" -> {
+                    card.setCardValue(CardValue.X);
+                }
+                case "IX" -> {
+                    card.setCardValue(CardValue.IX);
+                }
+                case "VIII" -> {
+                    card.setCardValue(CardValue.VIII);
+                }
+                case "VII" -> {
+                    card.setCardValue(CardValue.VII);
+                }
+            }
+            cardList.add(card);
+        }
+        Hand kezTemp = new Hand(cardList);
+        return kezTemp;
+    }
+
 }

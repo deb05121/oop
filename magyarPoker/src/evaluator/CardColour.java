@@ -1,5 +1,8 @@
 package evaluator;
 
 public enum CardColour {
-    SZIV, ZOLD, TOK, MAKK
+    SZIV, ZOLD, TOK, MAKK;
+
+
+
 }

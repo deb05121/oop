@@ -1,5 +1,7 @@
 package evaluator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,13 +49,13 @@ public class Hand {
     }
 
     private void evaluateHand() {
-        if(isPoker()){
+        if (isPoker()) {
             handValue = HandValue.POKER;
-        }else if(isFlush){
+        } else if (isFlush) {
             handValue = HandValue.FLUSH;
-        }else if(isAlmostFlush){
+        } else if (isAlmostFlush) {
             handValue = HandValue.ALMOSTFLUSH;
-        }else{
+        } else {
             handValue = HandValue.NOTHING;
         }
     }
@@ -63,17 +65,50 @@ public class Hand {
     }
 
     public void setIsFlush() {
-        int counter = 0;
-        CardColour cardColour = cards.get(0).getCardColour();
+        int counterSZIV = 0;
+        int counterTOK = 0;
+        int counterZOLD = 0;
+        int counterMAKK = 0;
+
+
         for (Card card : cards) {
-            if (card.getCardColour().equals(cardColour)) {
-                counter++;
+            switch (card.getCardColour()) {
+                case SZIV -> {
+                    counterSZIV++;
+                    if(counterSZIV==4){
+                        isAlmostFlush = true;
+                    }
+                }
+                case TOK -> {
+                    counterTOK++;
+                    if(counterTOK==4){
+                        isAlmostFlush = true;
+                    }
+                }
+                case ZOLD -> {
+                    counterZOLD++;
+                    if(counterZOLD==4){
+                        isAlmostFlush = true;
+                    }
+                }
+                case MAKK -> {
+                    counterMAKK++;
+                    if(counterMAKK==4){
+                        isAlmostFlush = true;
+                    }
+                }
             }
         }
-        if (counter >= 7){
+        List<Integer> counters = new ArrayList<>();
+        counters.add(counterMAKK);
+        counters.add(counterTOK);
+        counters.add(counterSZIV);
+        counters.add(counterZOLD);
+
+        int n = counters.stream().max(Integer::compare).get();
+        if (n == 7) {
             isFlush = true;
-        } else if(counter>3){
-            isAlmostFlush = true;
+            isAlmostFlush = false;
         }
     }
 
@@ -94,5 +129,59 @@ public class Hand {
 
                 ", cardFrequencies=" + cardFrequencies +
                 '}';
+    }
+
+    private static Hand getKezFromCsv(String fileName) throws InvalidHandSizeException, FileNotFoundException {
+        CsvParser parser = new CsvParser(new File("C:\\OOP\\oop\\magyarPoker\\csv\\" + fileName), CsvSeparator.COMMA);
+        List<List<String>> cardLists = parser.parse();
+
+        List<Card> cardList = new ArrayList<>();
+        for (List<String> twoStr : cardLists) {
+            Card card = new Card();
+            switch (twoStr.get(0)) {
+                case "SZIV" -> {
+                    card.setCardColour(CardColour.SZIV);
+                    ;
+                }
+                case "ZOLD" -> {
+                    card.setCardColour(CardColour.ZOLD);
+                }
+                case "TOK" -> {
+                    card.setCardColour(CardColour.TOK);
+                }
+                case "MAKK" -> {
+                    card.setCardColour(CardColour.MAKK);
+                }
+            }
+            switch (twoStr.get(1)) {
+                case "ASZ" -> {
+                    card.setCardValue(CardValue.ASZ);
+                }
+                case "KIRALY" -> {
+                    card.setCardValue(CardValue.KIRALY);
+                }
+                case "FELSO" -> {
+                    card.setCardValue(CardValue.FELSO);
+                }
+                case "ALSO" -> {
+                    card.setCardValue(CardValue.ALSO);
+                }
+                case "X" -> {
+                    card.setCardValue(CardValue.X);
+                }
+                case "IX" -> {
+                    card.setCardValue(CardValue.IX);
+                }
+                case "VIII" -> {
+                    card.setCardValue(CardValue.VIII);
+                }
+                case "VII" -> {
+                    card.setCardValue(CardValue.VII);
+                }
+            }
+            cardList.add(card);
+        }
+        Hand kezTemp = new Hand(cardList);
+        return kezTemp;
     }
 }
