@@ -18,8 +18,5 @@ public class Test {
         System.out.println("Addition is 6+3 = " + tobj.operate(6,3, add));
         System.out.println("Multiplication is 6*3 =  " + tobj.operate(6,3, multiply));
 
-
-        //String message = "HELLO WORD!";
-        PrintStream(message -> message.toLowerCase());
     }
 }
