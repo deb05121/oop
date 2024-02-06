@@ -2,58 +2,71 @@ package evaluator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-
-
-import java.io.FileNotFoundException;
-
-import java.util.stream.Stream;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HandTest {
+    static Hand hand = new Hand();
+    Card card = new Card();
+    static List<Card> cardList = new ArrayList<>();
+
+    public HandTest() {
+    }
 
     @ParameterizedTest
-    @MethodSource(value = "provideFlushHands")
-    void shouldBeFlush(Hand hand) {
+    @CsvFileSource(resources = {"../test/resources/kez.csv", "../test/resources/kez1.csv", "../test/resources/kez2.csv"})
+    void csvDataOfFlush(String colour, String value) throws InvalidHandSizeException {
+        card.setCardColourWithString(colour);
+        card.setCardValueWithString(value);
+        addCardToList(card);
+    }
+
+    static void shouldBeFlush(Hand hand) {
         Assertions.assertEquals(HandValue.FLUSH, hand.getHandValue());
+        hand.setHandEmpty();
     }
 
-    static Stream<Hand> provideFlushHands() throws InvalidHandSizeException, FileNotFoundException {
+    private static void addCardToList(Card card) throws InvalidHandSizeException {
+        cardList.add(card);
+        if (cardList.size() == 7) {
+            hand = new Hand(cardList);
+            System.out.println(hand.getHandValue());
+            System.out.println(cardList);
+            cardList.clear();
+            switch (hand.getHandValue()){
+                case FLUSH -> shouldBeFlush(hand);
+                case POKER -> shouldBePoker(hand);
+                case ALMOSTFLUSH -> shouldBeAlmostFlush(hand);
+                default -> System.out.println("Ilyen kiértékelés nincs.");
+            }
 
-        return Stream.of(
-                Main.getKezFromCsv("kez0.csv"),
-                Main.getKezFromCsv("kez1.csv"),
-                Main.getKezFromCsv("kez2.csv")
-        );
+        }
     }
 
     @ParameterizedTest
-    @MethodSource(value = "providePokerHands")
-    void shouldBePoker(Hand hand) {
+    @CsvFileSource(resources = {"../test/resources/kezpoker.csv", "../test/resources/kezpoker1.csv", "../test/resources/kezpoker2.csv"})
+    void csvDataOfPoker(String colour, String value) throws InvalidHandSizeException {
+        card.setCardColourWithString(colour);
+        card.setCardValueWithString(value);
+        addCardToList(card);
+    }
+    static void shouldBePoker(Hand hand) {
         Assertions.assertEquals(HandValue.POKER, hand.getHandValue());
+        hand.setHandEmpty();
     }
 
-    static Stream<Hand> providePokerHands() throws InvalidHandSizeException, FileNotFoundException {
-
-        return Stream.of(
-                Main.getKezFromCsv("kezpoker.csv"),
-                Main.getKezFromCsv("kezpoker1.csv"),
-                Main.getKezFromCsv("kezpoker2.csv")
-        );
-    }
 
     @ParameterizedTest
-    @MethodSource(value = "provideAlmostFlushHands")
-    void shouldBeAlmostFlush(Hand hand) {
-        Assertions.assertEquals(HandValue.ALMOSTFLUSH, hand.getHandValue());
+    @CsvFileSource(resources = {"../test/resources/kezalmostflush.csv", "../test/resources/kezalmostflush.csv", "../test/resources/kezalmostflush.csv"})
+    void csvDataOfAlmostFlush(String colour, String value) throws InvalidHandSizeException {
+        card.setCardColourWithString(colour);
+        card.setCardValueWithString(value);
+        addCardToList(card);
     }
-
-    static Stream<Hand> provideAlmostFlushHands() throws InvalidHandSizeException, FileNotFoundException {
-
-        return Stream.of(
-                Main.getKezFromCsv("kezalmostflush.csv"),
-                Main.getKezFromCsv("kezalmostflush1.csv"),
-                Main.getKezFromCsv("kezalmostflush2.csv")
-        );
+    static void shouldBeAlmostFlush(Hand hand) {
+        Assertions.assertEquals(HandValue.ALMOSTFLUSH, hand.getHandValue());
+        hand.setHandEmpty();
     }
 
 }
