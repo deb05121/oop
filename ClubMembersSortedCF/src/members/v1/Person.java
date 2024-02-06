@@ -86,8 +86,8 @@ public class Person implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        if (o instanceof Person person) {
+    public int compareTo(Object other) {
+        if (other instanceof Person person) {
             if(!surname.equals(person.getSurname())){
                 return surname.compareTo(person.getSurname());
             } else if(!firstName.equals(person.getFirstName())){

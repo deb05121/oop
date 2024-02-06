@@ -23,9 +23,9 @@ public class BuilderTest {
         Person person1 = new PersonBuilder()
                 .surname("Nagy")
                 .firstName("Endre")
-                .birthDate(LocalDate.ofEpochDay(19990203))
+                .dateOfBirth(LocalDate.ofEpochDay(19990203))
                 .residence(1234,"Debrecen", "Fő u. 1.")
-                .enterDate(LocalDate.ofEpochDay(20100203))
+                .dateOfEnter(LocalDate.ofEpochDay(20100203))
                 .grade(Grade.MASTER)
                 .build();
         Assertions.assertEquals("Endre", person1.getFirstName());

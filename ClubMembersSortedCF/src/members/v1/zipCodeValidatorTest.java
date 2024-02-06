@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class ValidatorTest {
+public class zipCodeValidatorTest {
     @ParameterizedTest
     @ValueSource(ints = {999, 0123, 12345,})
     void zipCodeValidatorTestA(int number){

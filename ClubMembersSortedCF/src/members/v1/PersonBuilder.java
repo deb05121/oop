@@ -15,7 +15,7 @@ public class PersonBuilder {
         return this;
     }
 
-    PersonBuilder birthDate(LocalDate birthDate) {
+    PersonBuilder dateOfBirth(LocalDate birthDate) {
         person.setDateOfBirth(birthDate);
         return this;
     }
@@ -26,7 +26,7 @@ public class PersonBuilder {
         return this;
     }
 
-    PersonBuilder enterDate(LocalDate enterDate) {
+    PersonBuilder dateOfEnter(LocalDate enterDate) {
         person.setDateOfEnter(enterDate);
         return this;
     }
