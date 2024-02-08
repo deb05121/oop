@@ -12,7 +12,7 @@ public class Test {
     }
 
     public static void whenNamesPresentConsumeAll() {
-        Consumer<String> printConsumer = t -> System.out.println(t);
+        Consumer<String> printConsumer = System.out::println;
         Stream<String> cities = Stream.of("Sydney", "Dhaka", "New York", "London");
         cities.forEach(printConsumer);
     }
@@ -25,7 +25,7 @@ public class Test {
                 list.set(i, list.get(i).toUpperCase());
             }
         };
-        Consumer<List<String>> printConsumer = list -> list.stream().forEach(System.out::println);
+        Consumer<List<String>> printConsumer = list -> list.forEach(System.out::println);
 
         upperCaseConsumer.andThen(printConsumer).accept(cities);
     }
