@@ -27,7 +27,7 @@ public class Test {
         };
         Consumer<List<String>> printConsumer = list -> list.forEach(System.out::println);
 
-        upperCaseConsumer.andThen(printConsumer).accept(cities);
+        upperCaseConsumer.andThen(printConsumer).accept(cities);    //Consumer interface has accept() method
     }
 
 }
