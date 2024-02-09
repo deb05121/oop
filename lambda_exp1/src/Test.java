@@ -1,12 +1,12 @@
 import java.io.PrintStream;
 
 public class Test {
+    @FunctionalInterface
     interface FuncInter1 {
         int operation(int a, int b, int c);    //SAM = Single Abstract Method
     }
 
     private int operate(int a, int b, int c, FuncInter1 fobj) {
-        //implemented by FuncInter1 interface
         return fobj.operation(a, b, c);
     }
 
