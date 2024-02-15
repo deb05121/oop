@@ -38,7 +38,7 @@ public class HandTest {
                 case FLUSH -> shouldBeFlush(hand);
                 case POKER -> shouldBePoker(hand);
                 case ALMOSTFLUSH -> shouldBeAlmostFlush(hand);
-                default -> System.out.println("Ilyen kiértékelés nincs.");
+                default -> System.out.println("There isn't such evaluate.");
             }
 
         }

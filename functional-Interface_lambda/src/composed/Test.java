@@ -1,7 +1,6 @@
 package composed;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -20,8 +19,8 @@ public class Test {
         processElements(
                 roster,
                 p -> p.getGender() == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25,
-                p -> p.getEmailAddress(),
-                email -> System.out.println(email)
+                Person::getEmailAddress,
+                System.out::println
         );
     }
    //functional interface
