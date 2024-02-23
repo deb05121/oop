@@ -95,7 +95,7 @@ public class Person implements Comparable {
             } else {
                 return dateOfBirth.compareTo(person.getDateOfBirth());
             }
-        }
+        } else System.out.println("These can't be comparable.");
         return 0;
     }
 }
